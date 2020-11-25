@@ -38,9 +38,9 @@ class App extends Component {
   // This will be used on sign out
   clearUser = () => this.setState({ user: null })
 
-  deleteAlert = (id) => {
+  deleteAlert = id => {
     // Removed message alert object from state based on an ID value
-    this.setState((state) => {
+    this.setState(state => {
       return { msgAlerts: state.msgAlerts.filter(msg => msg.id !== id) }
     })
   }
@@ -52,7 +52,7 @@ class App extends Component {
     const id = uuid()
     // Adds the message alert object to the current array of message alerts
     // stored on `App`'s state
-    this.setState((state) => {
+    this.setState(state => {
       return {
         msgAlerts: [...state.msgAlerts, { heading, message, variant, id }]
       }
@@ -75,46 +75,66 @@ class App extends Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
-        <main className="container">
-          <Route path='/sign-up' render={() => (
-            <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
-          )} />
-          <Route path='/sign-in' render={() => (
-            <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
-          )} />
-          <AuthenticatedRoute user={user} path='/sign-out' render={() => (
-            <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} path='/change-password' render={() => (
-            <ChangePassword msgAlert={this.msgAlert} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} path='/movies' render={() => (
-            <MovieIndex
-              user={user}
-              msgAlert={this.msgAlert}
-            />
-          )}/>
-          <AuthenticatedRoute user={user} path='/movie-create' render={() => (
-            <MovieCreate
-              user={user}
-              msgAlert={this.msgAlert}
-            />
-          )}/>
-          <AuthenticatedRoute user={user} path='/movie-show/:movieId' render={({ match }) => (
-            <MovieShow
-              user={user}
-              msgAlert={this.msgAlert}
-              match={match}
-            />
-          )}/>
-          <AuthenticatedRoute user={user} path='/movie-update/:movieId' render={({ match, history }) => (
-            <MovieUpdate
-              match={match}
-              history={history}
-              user={user}
-              msgAlert={this.msgAlert}
-            />
-          )}/>
+        <main className='container'>
+          <Route
+            path='/sign-up'
+            render={() => (
+              <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
+            )}
+          />
+          <Route
+            path='/sign-in'
+            render={() => (
+              <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/sign-out'
+            render={() => (
+              <SignOut
+                msgAlert={this.msgAlert}
+                clearUser={this.clearUser}
+                user={user}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/change-password'
+            render={() => (
+              <ChangePassword msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/movies'
+            render={() => <MovieIndex user={user} msgAlert={this.msgAlert} />}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/movie-create'
+            render={() => <MovieCreate user={user} msgAlert={this.msgAlert} />}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/movie-show/:movieId'
+            render={({ match }) => (
+              <MovieShow user={user} msgAlert={this.msgAlert} match={match} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/movie-update/:movieId'
+            render={({ match, history }) => (
+              <MovieUpdate
+                match={match}
+                history={history}
+                user={user}
+                msgAlert={this.msgAlert}
+              />
+            )}
+          />
         </main>
       </Fragment>
     )
