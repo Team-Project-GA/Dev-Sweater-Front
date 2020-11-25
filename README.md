@@ -13,8 +13,8 @@
 
 ## Wireframes & ERD
 
-[![ERD Image](https://imgur.com/8gT6Jao)]
-[![Wireframe Image](https://imgur.com/tYLdLcg)]
-[![Wireframe Image](https://imgur.com/UPGK6Z5)]
-[![Wireframe Image](https://imgur.com/MBatydc)]
-[![Wireframe Image](https://imgur.com/Vso6LJJ)]
+![ERD Image](https://i.imgur.com/8gT6Jao.png)
+![Wireframe Image](https://i.imgur.com/tYLdLcg.png)
+![Wireframe Image](https://i.imgur.com/UPGK6Z5.png)
+![Wireframe Image](https://i.imgur.com/MBatydc.png)
+![Wireframe Image](https://i.imgur.com/Vso6LJJ.png)
