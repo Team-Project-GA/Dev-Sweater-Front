@@ -12,26 +12,15 @@ class MovieIndex extends Component {
   }
 
   componentDidMount () {
-    const { user, msgAlert } = this.props
+    const { user } = this.props
 
     indexMovies(user)
       .then(res => {
         console.log(res)
         this.setState({ movieArray: res.data.movies })
       })
-      .then(() => {
-        msgAlert({
-          heading: 'Movie Index Success!',
-          message: 'Check em out!',
-          variant: 'success'
-        })
-      })
-      .catch(err => {
-        msgAlert({
-          heading: 'Movie Index Failed',
-          message: 'Failed with error: ' + err.message,
-          variant: 'danger'
-        })
+      .catch(() => {
+        return console.error
       })
   }
 

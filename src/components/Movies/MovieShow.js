@@ -6,51 +6,28 @@ import { showMovies, deleteMovies } from '../../api/movies'
 const MovieShow = (props) => {
   // const [loading, setLoading] = useState(true)
   const [movie, setMovie] = useState(null)
-  const { user, msgAlert, match, history } = props
+  const { user, match, history } = props
 
   // useEffect for componentDidMount
   // Load the movie to show
   useEffect(() => {
     // runs just once on mount :)
     // const { id } = props.match.params
-
-    showMovies(user, match.params.movieId)
+    showMovies(user, match.params.id)
       .then(res => {
-        console.log(res)
+        console.log('res is', res)
         setMovie(res.data.movie)
       })
-      .then(() => {
-        msgAlert({
-          heading: 'Show Movie Success',
-          message: 'See the movie there!',
-          variant: 'success'
-        })
-      })
-      .catch(err => {
-        msgAlert({
-          heading: 'Show Movie Failed :(',
-          message: 'Error code: ' + err.message,
-          variant: 'danger'
-        })
+      .catch(() => {
+        return console.error
       })
   }, [])
 
   const handleDelete = () => {
     deleteMovies(user, match.params.movieId)
-      .then(() => {
-        msgAlert({
-          heading: 'Movie Deleted',
-          message: 'Back to the list of movies that exist',
-          variant: 'success'
-        })
-      })
       .then(() => history.push('/movies'))
-      .catch(err => {
-        msgAlert({
-          heading: 'Deletion Failed',
-          message: 'Something went wrong: ' + err.message,
-          variant: 'danger'
-        })
+      .catch(() => {
+        return console.error
       })
   }
 
