@@ -1,9 +1,12 @@
 import React from 'react'
 
-const Cart = () => {
+const Cart = ({ onAdd, cartItems }) => {
+  console.log('cartitems', cartItems)
   return (
     <div>
-      <h1>this is cart</h1>
+      {cartItems.length === 0 ? <h1>Cart is Empty</h1> : cartItems.map(cartItem => (
+        <h1 key={cartItem._id}>{cartItem.name}</h1>
+      ))}
     </div>
   )
 }

@@ -18,43 +18,24 @@ import Cart from './components/Cart/Cart'
 import Home from './components/Home/Home'
 import { indexProducts } from './api/products'
 
-// const products = [
-//   {
-//     id: 1,
-//     title: 'Sweater',
-//     description: 'soft and wooly',
-//     price: 20.0,
-//     img:
-//       'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcS4h_YBn4WWsqhV1kj71N3GNbKXtyIWXq4ImaHYOdAzNjPeU_dysGIKp70c3KOTNGkkSMQQhA992A&usqp=CAc'
-//   },
-//   {
-//     id: 2,
-//     title: 'Dev Sweater',
-//     description: 'hard and rough',
-//     price: 25.0,
-//     img:
-//       'https://i.etsystatic.com/10157633/d/il/9c3c97/2102609728/il_340x270.2102609728_mzgn.jpg?version=0'
-//   },
-//   {
-//     id: 3,
-//     title: 'pants',
-//     description: 'blue jeans',
-//     price: 10.0,
-//     img:
-//       'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRu3zYgwoY0kkJIQy1Y6Bh0zw0WApSMRe7D1B6LBmnmb_DBQFQDXKU_esvRabWQerdL8sEW_HWkzA&usqp=CAc'
-//   },
-//   {
-//     id: 4,
-//     title: 'hat',
-//     description: 'snapback hard bill',
-//     price: 5.0,
-//     img:
-//       'https://images-na.ssl-images-amazon.com/images/I/61A6xgIEFaL._AC_UL1000_.jpg'
-//   }
-// ]
-
 const App = () => {
   const [user, setUsers] = useState(null)
+  const [cartItems, setCartItems] = useState([])
+
+  const onAddToCart = product => {
+    const productExist = cartItems.find(
+      (cartElement) => cartElement._id === product._id
+    )
+    if (productExist) {
+      setCartItems(
+        cartItems.map(cartElement => cartElement._id === product._id ? {
+          ...productExist, qty: productExist.qty + 1
+        } : cartElement)
+      )
+    } else {
+      setCartItems([...cartItems, { ...product, qty: 1 }])
+    }
+  }
 
   // setUser will take in a user object
   // and set the `user` state to hold that object
@@ -70,15 +51,19 @@ const App = () => {
       <Header user={user} />
       <main className='container'>
         <Route
-          exact path='/'
-          render={() => (
-            <Home setUser={setUser} user={user} />
-          )}
+          exact
+          path='/'
+          render={() => <Home setUser={setUser} user={user} />}
         />
         <Route
           path='/products'
           render={() => (
-            <Products indexProducts={indexProducts} setUser={setUser} user={user} />
+            <Products
+              onAdd={onAddToCart}
+              indexProducts={indexProducts}
+              setUser={setUser}
+              user={user}
+            />
           )}
         />
         <Route path='/sign-up' render={() => <SignUp setUser={setUser} />} />
@@ -96,7 +81,7 @@ const App = () => {
         <AuthenticatedRoute
           user={user}
           path='/cart'
-          render={() => <Cart user={user} />}
+          render={() => <Cart onAdd={onAddToCart} cartItems={cartItems} user={user} />}
         />
         <AuthenticatedRoute
           user={user}
