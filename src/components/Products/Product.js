@@ -16,7 +16,7 @@ const Product = ({ product, user, onAdd }) => {
                 onClick={() => {
                   console.log('on add button', onAdd)
                   onAdd(product)
-                }} variant='outline-primary'>Add to Cart</Button>
+                }} variant='outline-primary'>Add too Cart</Button>
               {}
               <Button variant='outline-primary'>Go to Cart</Button>
             </Fragment>
