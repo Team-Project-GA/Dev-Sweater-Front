@@ -17,6 +17,7 @@ import Products from './components/Products/Products'
 import Cart from './components/Cart/Cart'
 import Home from './components/Home/Home'
 import { indexProducts } from './api/products'
+import ProductCreate from './components/Products/ProductCreate'
 
 const App = () => {
   const [user, setUsers] = useState(null)
@@ -48,7 +49,7 @@ const App = () => {
 
   return (
     <Fragment>
-      <Header user={user} />
+      <Header cartCount={cartItems.length} user={user} />
       <main className='container'>
         <Route
           exact
@@ -65,6 +66,11 @@ const App = () => {
               user={user}
             />
           )}
+        />
+        <AuthenticatedRoute
+          user={user}
+          path='/product-create'
+          render={() => <ProductCreate user={user} />}
         />
         <Route path='/sign-up' render={() => <SignUp setUser={setUser} />} />
         <Route path='/sign-in' render={() => <SignIn setUser={setUser} />} />

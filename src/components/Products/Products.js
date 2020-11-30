@@ -4,14 +4,12 @@ import Product from './Product'
 // import { Link } from 'react-router-dom'
 
 const Products = ({ indexProducts, user, onAdd }) => {
-  console.log('products in the product component:', indexProducts)
-  console.log('user in the product component:', user)
   const [products, setProducts] = useState([])
   useEffect(() => {
     indexProducts(user).then(res => {
       setProducts(res.data.products)
       console.log('res from api in products component', res)
-    })
+    }).catch(() => console.error)
   }, [])
 
   console.log('this is products state', products)
