@@ -1,6 +1,7 @@
 import React from 'react'
+import { Button } from 'react-bootstrap'
 
-const Cart = ({ onAdd, cartItems }) => {
+const Cart = ({ onAdd, onRemove, cartItems }) => {
   console.log('cartitems', cartItems)
   return (
     <div>
@@ -9,6 +10,10 @@ const Cart = ({ onAdd, cartItems }) => {
           <h1>Name: {cartItem.name}</h1>
           <h3>Price: ${cartItem.price}</h3>
           <h5>Qty: {cartItem.qty}</h5>
+          <Button variant="outline-primary" onClick={() => {
+            console.log('on remove button', onRemove)
+            onRemove(cartItem)
+          }}>Remove From Cart</Button>
         </div>
       ))}
     </div>

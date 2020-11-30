@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Card, Button, Col } from 'react-bootstrap'
 
-const Product = ({ product, user, onAdd }) => {
+const Product = ({ product, user, onAdd, onRemove }) => {
   return (
     <div className='row'>
       <Col>
@@ -19,9 +19,9 @@ const Product = ({ product, user, onAdd }) => {
                     onAdd(product)
                   }}
                   variant='outline-primary'>
-                  Add too Cart
+                  Add
                 </Button>
-                <Button variant='outline-primary'>Go to Cart</Button>
+                <Button onClick={() => { onRemove(product) } } variant='outline-primary'>Remove</Button>
               </Fragment>
             ) : (
               ''
