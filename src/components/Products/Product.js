@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Card, Button, Col } from 'react-bootstrap'
 
 const Product = ({ product, user, onAdd, onRemove }) => {
@@ -12,7 +12,7 @@ const Product = ({ product, user, onAdd, onRemove }) => {
             <Card.Text>{product.description}</Card.Text>
             <Card.Text>${product.price}</Card.Text>
             {user !== null ? (
-              <Fragment>
+              <div className='d-flex justify-content-around'>
                 <Button
                   onClick={() => {
                     console.log('on add button', onAdd)
@@ -22,7 +22,7 @@ const Product = ({ product, user, onAdd, onRemove }) => {
                   Add
                 </Button>
                 <Button onClick={() => { onRemove(product) } } variant='outline-primary'>Remove</Button>
-              </Fragment>
+              </div>
             ) : (
               ''
             )}

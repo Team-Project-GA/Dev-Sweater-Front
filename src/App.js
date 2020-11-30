@@ -18,6 +18,7 @@ import Cart from './components/Cart/Cart'
 import Home from './components/Home/Home'
 import { indexProducts } from './api/products'
 import ProductCreate from './components/Products/ProductCreate'
+import OrderHistory from './components/OrderHistory/OrderHistory'
 
 const App = () => {
   const [user, setUsers] = useState(null)
@@ -103,6 +104,11 @@ const App = () => {
           user={user}
           path='/cart'
           render={() => <Cart onAdd={onAddToCart} onRemove={onRemoveFromCart} cartItems={cartItems} user={user} />}
+        />
+        <AuthenticatedRoute
+          user={user}
+          path='/orders'
+          render={() => <OrderHistory onAdd={onAddToCart} onRemove={onRemoveFromCart} cartItems={cartItems} user={user} />}
         />
         <AuthenticatedRoute
           user={user}
