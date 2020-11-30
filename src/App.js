@@ -38,6 +38,20 @@ const App = () => {
     }
   }
 
+  const onRemoveFromCart = product => {
+    const productExist = cartItems.find(
+      (cartElement) => cartElement._id === product._id
+    )
+    if (productExist.qty === 1) {
+      setCartItems(cartItems.filter((cartElement) => cartElement._id !== product._id))
+    } else {
+      setCartItems(
+        cartItems.map((cartElement) =>
+          cartElement._id === product._id ? { ...productExist, qty: productExist.qty - 1 } : cartElement)
+      )
+    }
+  }
+
   // setUser will take in a user object
   // and set the `user` state to hold that object
   // This will be used on sign in
@@ -61,6 +75,7 @@ const App = () => {
           render={() => (
             <Products
               onAdd={onAddToCart}
+              onRemove={onRemoveFromCart}
               indexProducts={indexProducts}
               setUser={setUser}
               user={user}
@@ -87,7 +102,7 @@ const App = () => {
         <AuthenticatedRoute
           user={user}
           path='/cart'
-          render={() => <Cart onAdd={onAddToCart} cartItems={cartItems} user={user} />}
+          render={() => <Cart onAdd={onAddToCart} onRemove={onRemoveFromCart} cartItems={cartItems} user={user} />}
         />
         <AuthenticatedRoute
           user={user}

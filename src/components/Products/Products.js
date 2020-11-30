@@ -3,7 +3,7 @@ import Product from './Product'
 // import { Card, Button, Col, Row } from 'react-bootstrap'
 // import { Link } from 'react-router-dom'
 
-const Products = ({ indexProducts, user, onAdd }) => {
+const Products = ({ indexProducts, user, onAdd, onRemove }) => {
   const [products, setProducts] = useState([])
   useEffect(() => {
     indexProducts(user).then(res => {
@@ -17,7 +17,7 @@ const Products = ({ indexProducts, user, onAdd }) => {
   return (
     <div>
       {products.map(product => (
-        <Product user={user} onAdd={onAdd} product={product} key={product._id} />
+        <Product user={user} onAdd={onAdd} product={product} onRemove={onRemove} key={product._id} />
       ))}
     </div>
   )
