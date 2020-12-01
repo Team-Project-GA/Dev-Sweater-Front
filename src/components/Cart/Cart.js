@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 
-const Cart = ({ onAdd, onRemove, cartItems }) => {
+const Cart = ({ onAdd, onRemove, cartItems, order, onOrder }) => {
   console.log('cartitems', cartItems)
   return (
     <div>
@@ -23,9 +23,9 @@ const Cart = ({ onAdd, onRemove, cartItems }) => {
                 Remove From Cart
               </Button>
               <Button
-                onAdd={onAdd}
                 onClick={() => {
-                  console.log('checkout was clicked')
+                  onOrder(cartItems)
+                  console.log('order is: ', order)
                 }}
                 variant='outline-primary'>
                 Checkout
