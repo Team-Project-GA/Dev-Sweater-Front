@@ -9,7 +9,6 @@ const OrderHistory = ({ order, totalPrice }) => {
       ) : (
         order.map(item => (
           <div style={{ textAlign: 'center' }} key={item._id}>
-            <h1 style={{ marginBottom: '2rem', borderBottom: 'dotted 2px black', paddingBottom: '2rem' }}>${totalPrice}</h1>
             <img src={item.img} alt={item.name}></img>
             <h1>Name: {item.name}</h1>
             <h3>Price: ${item.price}</h3>
