@@ -23,6 +23,7 @@ import OrderHistory from './components/OrderHistory/OrderHistory'
 const App = () => {
   const [user, setUsers] = useState(null)
   const [cartItems, setCartItems] = useState([])
+  const [order, setOrder] = useState([])
 
   const onAddToCart = product => {
     const productExist = cartItems.find(
@@ -50,6 +51,20 @@ const App = () => {
         cartItems.map((cartElement) =>
           cartElement._id === product._id ? { ...productExist, qty: productExist.qty - 1 } : cartElement)
       )
+    }
+  }
+
+  const onOrder = product => {
+    const orderExist = order.find(
+      (cartElement) => cartElement._id === product._id
+    )
+    if (orderExist) {
+      setOrder(order.map(cartElement => cartElement._id === product._id ? {
+        ...orderExist, qty: orderExist.qty + 1
+      } : cartElement)
+      )
+    } else {
+      setOrder([...order, ...product])
     }
   }
 
@@ -103,12 +118,12 @@ const App = () => {
         <AuthenticatedRoute
           user={user}
           path='/cart'
-          render={() => <Cart onAdd={onAddToCart} onRemove={onRemoveFromCart} cartItems={cartItems} user={user} />}
+          render={() => <Cart onAdd={onAddToCart} onRemove={onRemoveFromCart} cartItems={cartItems} order={order} onOrder={onOrder} user={user} />}
         />
         <AuthenticatedRoute
           user={user}
           path='/orders'
-          render={() => <OrderHistory onAdd={onAddToCart} onRemove={onRemoveFromCart} cartItems={cartItems} user={user} />}
+          render={() => <OrderHistory order={order} onAdd={onAddToCart} onRemove={onRemoveFromCart} cartItems={cartItems} user={user} />}
         />
         <AuthenticatedRoute
           user={user}

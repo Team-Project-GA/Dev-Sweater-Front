@@ -1,13 +1,13 @@
 import React from 'react'
 
-const OrderHistory = ({ cartItems, onAdd }) => {
-  console.log('this is order component cart items', cartItems)
+const OrderHistory = ({ order, onAdd }) => {
+  console.log('this is order in order history', order)
   return (
     <div>
-      {cartItems.length === 0 ? (
+      {order.length === 0 ? (
         <h1>You have no orders</h1>
       ) : (
-        cartItems.map(item => (
+        order.map(item => (
           <div style={{ textAlign: 'center' }} key={item._id}>
             <img src={item.img} alt={item.name}></img>
             <h1>Name: {item.name}</h1>
