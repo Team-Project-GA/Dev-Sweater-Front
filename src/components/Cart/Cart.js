@@ -1,10 +1,22 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
+import StripeCheckoutButton from '../Stripe-Button/StripeButton'
 
-const Cart = ({ onAdd, onRemove, cartItems, order, onOrder }) => {
+const Cart = ({ totalPrice, onRemove, cartItems, order, onOrder }) => {
   console.log('cartitems', cartItems)
+
   return (
     <div>
+      <h5
+        style={{
+          textAlign: 'center',
+          fontWeight: 'bold',
+          marginBottom: '3rem',
+          paddingBottom: '1.5rem',
+          borderBottom: 'dotted 3px black'
+        }}>
+        Your Total is: ${totalPrice}
+      </h5>
       {cartItems.length === 0 ? (
         <h1 style={{ textAlign: 'center' }}>Cart is Empty</h1>
       ) : (
@@ -22,6 +34,7 @@ const Cart = ({ onAdd, onRemove, cartItems, order, onOrder }) => {
                 }}>
                 Remove From Cart
               </Button>
+              <StripeCheckoutButton order={order} price={totalPrice} />
               <Button
                 onClick={() => {
                   onOrder(cartItems)
