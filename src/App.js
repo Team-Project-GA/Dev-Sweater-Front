@@ -95,7 +95,6 @@ const App = () => {
 
   const totalPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0)
   console.log('total price is', totalPrice)
-
   return (
     <Fragment>
       <Header cartCount={cartItems.length} user={user} />
@@ -139,6 +138,7 @@ const App = () => {
           path='/cart'
           render={() => (
             <Cart
+              setCartItems={setCartItems}
               totalPrice={totalPrice}
               onAdd={onAddToCart}
               onRemove={onRemoveFromCart}

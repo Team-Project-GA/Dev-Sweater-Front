@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'react-bootstrap'
 import StripeCheckoutButton from '../Stripe-Button/StripeButton'
 
-const Cart = ({ totalPrice, onRemove, cartItems, order, onOrder }) => {
+const Cart = ({ totalPrice, onRemove, cartItems, order, onOrder, onAdd, setCartItems }) => {
   console.log('cartitems', cartItems)
 
   return (
@@ -32,17 +32,17 @@ const Cart = ({ totalPrice, onRemove, cartItems, order, onOrder }) => {
                   console.log('on remove button', onRemove)
                   onRemove(cartItem)
                 }}>
-                Remove From Cart
+                Remove
               </Button>
-              <StripeCheckoutButton order={order} price={totalPrice} />
               <Button
+                variant='outline-primary'
                 onClick={() => {
-                  onOrder(cartItems)
-                  console.log('order is: ', order)
-                }}
-                variant='outline-primary'>
-                Checkout
+                  console.log('on add button', onAdd)
+                  onAdd(cartItem)
+                }}>
+                Add
               </Button>
+              <StripeCheckoutButton order={order} price={totalPrice} onOrder={onOrder} cartItems={cartItems} />
             </div>
           </div>
         ))

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const OrderHistory = ({ order, totalPrice }) => {
+const OrderHistory = ({ order, onAdd }) => {
   console.log('this is order in order history', order)
   return (
     <div>
