@@ -27,13 +27,18 @@ const App = () => {
 
   const onAddToCart = product => {
     const productExist = cartItems.find(
-      (cartElement) => cartElement._id === product._id
+      cartElement => cartElement._id === product._id
     )
     if (productExist) {
       setCartItems(
-        cartItems.map(cartElement => cartElement._id === product._id ? {
-          ...productExist, qty: productExist.qty + 1
-        } : cartElement)
+        cartItems.map(cartElement =>
+          cartElement._id === product._id
+            ? {
+              ...productExist,
+              qty: productExist.qty + 1
+            }
+            : cartElement
+        )
       )
     } else {
       setCartItems([...cartItems, { ...product, qty: 1 }])
@@ -42,26 +47,37 @@ const App = () => {
 
   const onRemoveFromCart = product => {
     const productExist = cartItems.find(
-      (cartElement) => cartElement._id === product._id
+      cartElement => cartElement._id === product._id
     )
     if (productExist.qty === 1) {
-      setCartItems(cartItems.filter((cartElement) => cartElement._id !== product._id))
+      setCartItems(
+        cartItems.filter(cartElement => cartElement._id !== product._id)
+      )
     } else {
       setCartItems(
-        cartItems.map((cartElement) =>
-          cartElement._id === product._id ? { ...productExist, qty: productExist.qty - 1 } : cartElement)
+        cartItems.map(cartElement =>
+          cartElement._id === product._id
+            ? { ...productExist, qty: productExist.qty - 1 }
+            : cartElement
+        )
       )
     }
   }
 
   const onOrder = product => {
     const orderExist = order.find(
-      (cartElement) => cartElement._id === product._id
+      cartElement => cartElement._id === product._id
     )
     if (orderExist) {
-      setOrder(order.map(cartElement => cartElement._id === product._id ? {
-        ...orderExist, qty: orderExist.qty + 1
-      } : cartElement)
+      setOrder(
+        order.map(cartElement =>
+          cartElement._id === product._id
+            ? {
+              ...orderExist,
+              qty: orderExist.qty + 1
+            }
+            : cartElement
+        )
       )
     } else {
       setOrder([...order, ...product])
@@ -76,6 +92,9 @@ const App = () => {
   // clearUser will set the `user` state to be null
   // This will be used on sign out
   const clearUser = () => setUsers(null)
+
+  const totalPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0)
+  console.log('total price is', totalPrice)
 
   return (
     <Fragment>
@@ -118,12 +137,31 @@ const App = () => {
         <AuthenticatedRoute
           user={user}
           path='/cart'
-          render={() => <Cart onAdd={onAddToCart} onRemove={onRemoveFromCart} cartItems={cartItems} order={order} onOrder={onOrder} user={user} />}
+          render={() => (
+            <Cart
+              totalPrice={totalPrice}
+              onAdd={onAddToCart}
+              onRemove={onRemoveFromCart}
+              cartItems={cartItems}
+              order={order}
+              onOrder={onOrder}
+              user={user}
+            />
+          )}
         />
         <AuthenticatedRoute
           user={user}
           path='/orders'
-          render={() => <OrderHistory order={order} onAdd={onAddToCart} onRemove={onRemoveFromCart} cartItems={cartItems} user={user} />}
+          render={() => (
+            <OrderHistory
+              totalPrice={totalPrice}
+              order={order}
+              onAdd={onAddToCart}
+              onRemove={onRemoveFromCart}
+              cartItems={cartItems}
+              user={user}
+            />
+          )}
         />
         <AuthenticatedRoute
           user={user}
