@@ -12,12 +12,12 @@ const ProductCreate = ({ user }) => {
   const [createdId, setCreatedId] = useState(null)
 
   const handleChange = e => {
-    console.log('changing')
+    // console.log('changing')
     const updatedField = { [e.target.name]: e.target.value }
     setProduct(currState => {
       const updatedProduct = { ...currState.product, ...updatedField
       }
-      console.log('updated product is', updatedProduct)
+      // console.log('updated product is', updatedProduct)
       return { product: updatedProduct }
     })
   }
@@ -26,9 +26,9 @@ const ProductCreate = ({ user }) => {
     createProduct(user, product)
       .then(res => {
         setCreatedId({ createdId: res.data.product._id })
-        console.log('this product is product create component', product)
+        // console.log('this product is product create component', product)
       })
-      .catch(() => console.error)
+      .catch((err) => err)
   }
   if (createdId) {
     return <Redirect to='/products' />

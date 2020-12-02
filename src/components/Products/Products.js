@@ -9,11 +9,11 @@ const Products = ({ indexProducts, user, onAdd, onRemove }) => {
   useEffect(() => {
     indexProducts(user).then(res => {
       setProducts(res.data.products)
-      console.log('res from api in products component', res)
-    }).catch(() => console.error)
+      // console.log('res from api in products component', res)
+    }).catch((err) => err)
   }, [])
 
-  console.log('this is products state', products)
+  // console.log('this is products state', products)
 
   return (
     <Row>

@@ -31,7 +31,7 @@ class SignIn extends Component {
       .then(() => history.push('/products'))
       .catch(() => {
         this.setState({ email: '', password: '' })
-        return console.error
+        // return console.error
       })
   }
 

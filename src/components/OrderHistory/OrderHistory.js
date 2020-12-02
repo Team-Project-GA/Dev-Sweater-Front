@@ -8,7 +8,7 @@ const OrderHistory = ({
   setOrder,
   onAdd
 }) => {
-  console.log('this is order in order history', order)
+  // console.log('this is order in order history', order)
 
   // useEffect(() => {
   //   showOrders(user, cartItems.owner).then(res => {

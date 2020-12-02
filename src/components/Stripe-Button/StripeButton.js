@@ -7,7 +7,7 @@ const StripeCheckoutButton = ({ price, order, onOrder, cartItems }) => {
     'pk_test_51HrE44L2U82glnTctIrx2JUyDW0bxbUOjku0zEbSlxDQj4NNlApmhtLS2PAdHVzPoCVBvfxBJkwwkLxG5pnO9xmy00g9ni8j92'
 
   const onToken = token => {
-    console.log('this is the token from stripe button', token, order)
+    // console.log('this is the token from stripe button', token, order)
     alert('Payment Succesful!')
   }
   // useEffect(() => {
@@ -27,7 +27,7 @@ const StripeCheckoutButton = ({ price, order, onOrder, cartItems }) => {
     >
       <button style={{ marginBottom: '2rem' }} className="btn btn-outline-primary btn-block btn-lg" onClick={() => {
         onOrder(cartItems)
-        console.log('the order/stripe button is: ', order)
+        // console.log('the order/stripe button is: ', order)
       }}>
         <span className='p-10'>Checkout</span>
       </button></StripeCheckout>
