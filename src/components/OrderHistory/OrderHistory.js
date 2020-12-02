@@ -1,7 +1,14 @@
 import React from 'react'
 
-const OrderHistory = ({ order, onAdd }) => {
+const OrderHistory = ({ showOrders, order, user, cartItems, setOrder, onAdd }) => {
   console.log('this is order in order history', order)
+
+  // useEffect(() => {
+  //   showOrders(user, cartItems.owner).then(res => {
+  //     console.log('res from orderHistory component', res)
+  //   }).catch(() => console.error)
+  // }, [])
+
   return (
     <div>
       {order.length === 0 ? (
