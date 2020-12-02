@@ -11,10 +11,6 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
-import MovieIndex from './components/Movies/MovieIndex'
-import MovieCreate from './components/Movies/MovieCreate'
-import MovieShow from './components/Movies/MovieShow'
-import MovieUpdate from './components/Movies/MovieUpdate'
 import Products from './components/Products/Products'
 import Cart from './components/Cart/Cart'
 import Home from './components/Home/Home'
@@ -98,7 +94,7 @@ const App = () => {
   const clearUser = () => setUsers(null)
 
   const totalPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0)
-  console.log('total price is', totalPrice)
+  // console.log('total price is', totalPrice)
 
   const deleteAlert = (id) => {
     setMsgAlerts((state) => {
@@ -191,28 +187,6 @@ const App = () => {
               showOrders={showOrders}
               setOrder={setOrder}
             />
-          )}
-        />
-        <AuthenticatedRoute
-          user={user}
-          path='/movies'
-          render={() => <MovieIndex user={user} />}
-        />
-        <AuthenticatedRoute
-          user={user}
-          path='/movie-create'
-          render={() => <MovieCreate user={user} />}
-        />
-        <AuthenticatedRoute
-          user={user}
-          path='/movie-show/:id'
-          render={({ match }) => <MovieShow user={user} match={match} />}
-        />
-        <AuthenticatedRoute
-          user={user}
-          path='/movie-update/:movieId'
-          render={({ match, history }) => (
-            <MovieUpdate match={match} history={history} user={user} />
           )}
         />
       </main>

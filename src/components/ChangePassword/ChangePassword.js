@@ -29,7 +29,7 @@ class ChangePassword extends Component {
       .then(() => history.push('/'))
       .catch(() => {
         this.setState({ oldPassword: '', newPassword: '' })
-        return console.error
+        // return console.error
       })
   }
 

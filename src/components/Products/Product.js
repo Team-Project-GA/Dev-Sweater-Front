@@ -23,7 +23,7 @@ const Product = ({ product, user, onAdd, onRemove }) => {
             <div className='d-flex justify-content-around'>
               <Button
                 onClick={() => {
-                  console.log('on add button', onAdd)
+                  // console.log('on add button', onAdd)
                   onAdd(product)
                 }}
                 variant='outline-primary'>

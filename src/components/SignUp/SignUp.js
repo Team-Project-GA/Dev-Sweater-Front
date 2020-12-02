@@ -32,7 +32,7 @@ class SignUp extends Component {
       .then(() => history.push('/'))
       .catch(() => {
         this.setState({ email: '', password: '', passwordConfirmation: '' })
-        return console.error
+        // return console.error
       })
   }
   render () {
