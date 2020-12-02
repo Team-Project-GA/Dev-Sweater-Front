@@ -25,11 +25,11 @@ const StripeCheckoutButton = ({ price, order, onOrder, cartItems }) => {
       token={onToken}
       stripeKey={publishableKey}
     >
-      <button className="btn btn-outline-primary" onClick={() => {
+      <button style={{ marginBottom: '2rem' }} className="btn btn-outline-primary btn-block btn-lg" onClick={() => {
         onOrder(cartItems)
         console.log('the order/stripe button is: ', order)
       }}>
-        Checkout
+        <span className='p-10'>Checkout</span>
       </button></StripeCheckout>
   )
 }
