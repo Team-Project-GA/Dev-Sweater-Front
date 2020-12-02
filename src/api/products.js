@@ -18,3 +18,13 @@ export const createProduct = (user, product) => {
     data: product
   })
 }
+
+export const deleteProduct = (user, productId) => {
+  return axios({
+    method: 'DELETE',
+    url: apiUrl + '/products/' + productId,
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
+}

@@ -1,9 +1,11 @@
 // import react components etc.
 import React, { Fragment, useState } from 'react'
 import { Route } from 'react-router-dom'
+import { v4 as uuid } from 'uuid'
 
 // Import custom components
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
+import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
 import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
@@ -17,6 +19,7 @@ import Products from './components/Products/Products'
 import Cart from './components/Cart/Cart'
 import Home from './components/Home/Home'
 import { indexProducts } from './api/products'
+import { showOrders } from './api/orderHistory'
 import ProductCreate from './components/Products/ProductCreate'
 import OrderHistory from './components/OrderHistory/OrderHistory'
 
@@ -24,6 +27,7 @@ const App = () => {
   const [user, setUsers] = useState(null)
   const [cartItems, setCartItems] = useState([])
   const [order, setOrder] = useState([])
+  const [msgAlerts, setMsgAlerts] = useState([])
 
   const onAddToCart = product => {
     const productExist = cartItems.find(
@@ -95,9 +99,33 @@ const App = () => {
 
   const totalPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0)
   console.log('total price is', totalPrice)
+
+  const deleteAlert = (id) => {
+    setMsgAlerts((state) => {
+      return { msgAlerts: state.msgAlerts.filter(msg => msg.id !== id) }
+    })
+  }
+
+  const msgAlert = ({ heading, message, variant }) => {
+    const id = uuid()
+    setMsgAlerts((state) => {
+      return { msgAlerts: [...state.msgAlerts, { heading, message, variant, id }] }
+    })
+  }
+
   return (
     <Fragment>
       <Header cartCount={cartItems.length} user={user} />
+      {msgAlerts.map((msgAlert, index) => (
+        <AutoDismissAlert
+          key={index}
+          heading={msgAlert.heading}
+          variant={msgAlert.variant}
+          message={msgAlert.message}
+          id={msgAlert.id}
+          deleteAlert={deleteAlert}
+        />
+      ))}
       <main className='container'>
         <Route
           exact
@@ -122,7 +150,7 @@ const App = () => {
           render={() => <ProductCreate user={user} />}
         />
         <Route path='/sign-up' render={() => <SignUp setUser={setUser} />} />
-        <Route path='/sign-in' render={() => <SignIn setUser={setUser} />} />
+        <Route path='/sign-in' render={() => <SignIn setUser={setUser} msgAlert={msgAlert}/>} />
         <AuthenticatedRoute
           user={user}
           path='/sign-out'
@@ -160,6 +188,8 @@ const App = () => {
               onRemove={onRemoveFromCart}
               cartItems={cartItems}
               user={user}
+              showOrders={showOrders}
+              setOrder={setOrder}
             />
           )}
         />
