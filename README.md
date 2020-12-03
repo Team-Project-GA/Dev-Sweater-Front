@@ -2,7 +2,7 @@
 
 ## Application
 
-This is our team project Dev-Sweater e-commerce site. This application was broken into two parts: `Dev-Sweater-Front` & `Dev-Sweater-Back`. The `Dev-Sweater-Front` was designed to communitcate with `Dev-Sweater-Back` API, so that a user can go through the process of purchasing a product.
+This is our team project, an e-commerce site called Dev-Sweater. This application was broken into two parts: `Dev-Sweater-Front` & `Dev-Sweater-Back`. The `Dev-Sweater-Front` was designed to communitcate with `Dev-Sweater-Back` API, so that a user can go through the process of purchasing a product.
 
 ## Important Links
 
@@ -18,7 +18,8 @@ We started by creating the ERD, Wireframes and SCRUM planning for the project. W
 
 #### Technologies Used
 
-- HTML/CSS
+- HTML
+- CSS
 - React
 - React-Bootstrap
 - Stripe Checkout
@@ -38,9 +39,8 @@ We started by creating the ERD, Wireframes and SCRUM planning for the project. W
 
 ## Unsolved Problems
 
-- Clear cart after order has been purchased
+- Clear cart after an order has been purchased
 - Add in `msgAlert` on failure
-
 - Clear `orderHistory` on different user sign-in
 
 ## Wireframes & ERD
