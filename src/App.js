@@ -178,6 +178,7 @@ const App = () => {
           path='/orders'
           render={() => (
             <OrderHistory
+              setCartItems={setCartItems}
               totalPrice={totalPrice}
               order={order}
               onAdd={onAddToCart}

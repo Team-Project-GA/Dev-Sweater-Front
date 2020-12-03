@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button } from 'react-bootstrap'
 import StripeCheckoutButton from '../Stripe-Button/StripeButton'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-const Cart = ({ totalPrice, onRemove, cartItems, order, onOrder, onAdd, setCartItems }) => {
-  // console.log('cartitems', cartItems)
-
+const Cart = ({
+  totalPrice,
+  onRemove,
+  cartItems,
+  order,
+  onOrder,
+  onAdd,
+  setCartItems
+}) => {
+  useEffect(() => {
+    const notify = () => {
+      toast.dark(`YOU HAVE ${cartItems.length} ITEMS IN YOUR CART!`, {
+        position: toast.POSITION.BOTTOM_CENTER,
+        autoClose: 2500
+      })
+    }
+    return notify()
+    // console.log('on add button', onAdd)
+  }, [])
   return (
     <div>
       <h2
@@ -17,7 +35,13 @@ const Cart = ({ totalPrice, onRemove, cartItems, order, onOrder, onAdd, setCartI
         }}>
         Your Total is: ${totalPrice}
       </h2>
-      <StripeCheckoutButton order={order} price={totalPrice} onOrder={onOrder} cartItems={cartItems} />
+      <ToastContainer />
+      <StripeCheckoutButton
+        order={order}
+        price={totalPrice}
+        onOrder={onOrder}
+        cartItems={cartItems}
+      />
       {cartItems.length === 0 ? (
         <h1 style={{ textAlign: 'center' }}>Cart is Empty</h1>
       ) : (
