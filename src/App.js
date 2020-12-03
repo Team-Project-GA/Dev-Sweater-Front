@@ -22,8 +22,32 @@ import OrderHistory from './components/OrderHistory/OrderHistory'
 const App = () => {
   const [user, setUsers] = useState(null)
   const [cartItems, setCartItems] = useState([])
+<<<<<<< HEAD
   const [order, setOrder] = useState([])
   const [msgAlerts, setMsgAlerts] = useState([])
+=======
+  const [orders, setOrders] = useState([])
+
+  const onOrder = product => {
+    const productExist = orders.find(
+      cartElement => cartElement._id === product._id
+    )
+    if (productExist) {
+      setOrders(
+        orders.map(cartElement =>
+          cartElement._id === product._id
+            ? {
+              ...productExist,
+              qty: productExist.qty + 1
+            }
+            : cartElement
+        )
+      )
+    } else {
+      setOrders([...orders, { ...product, orderQty: 1 }])
+    }
+  }
+>>>>>>> 564e345... order history try
 
   const onAddToCart = product => {
     const productExist = cartItems.find(
@@ -60,6 +84,7 @@ const App = () => {
             ? { ...productExist, qty: productExist.qty - 1 }
             : cartElement
         )
+<<<<<<< HEAD
       )
     }
   }
@@ -78,6 +103,8 @@ const App = () => {
             }
             : cartElement
         )
+=======
+>>>>>>> 564e345... order history try
       )
     } else {
       setOrder([...order, ...product])
@@ -162,6 +189,7 @@ const App = () => {
           path='/cart'
           render={() => (
             <Cart
+<<<<<<< HEAD
               setCartItems={setCartItems}
               totalPrice={totalPrice}
               onAdd={onAddToCart}
@@ -169,6 +197,12 @@ const App = () => {
               cartItems={cartItems}
               order={order}
               onOrder={onOrder}
+=======
+              onOrder={onOrder}
+              onAdd={onAddToCart}
+              onRemove={onRemoveFromCart}
+              cartItems={cartItems}
+>>>>>>> 564e345... order history try
               user={user}
             />
           )}
@@ -178,6 +212,7 @@ const App = () => {
           path='/orders'
           render={() => (
             <OrderHistory
+<<<<<<< HEAD
               totalPrice={totalPrice}
               order={order}
               onAdd={onAddToCart}
@@ -187,6 +222,36 @@ const App = () => {
               showOrders={showOrders}
               setOrder={setOrder}
             />
+=======
+              onOrder={onOrder}
+              onRemove={onRemoveFromCart}
+              cartItems={cartItems}
+              orders={orders}
+              user={user}
+            />
+          )}
+        />
+        <AuthenticatedRoute
+          user={user}
+          path='/movies'
+          render={() => <MovieIndex user={user} />}
+        />
+        <AuthenticatedRoute
+          user={user}
+          path='/movie-create'
+          render={() => <MovieCreate user={user} />}
+        />
+        <AuthenticatedRoute
+          user={user}
+          path='/movie-show/:id'
+          render={({ match }) => <MovieShow user={user} match={match} />}
+        />
+        <AuthenticatedRoute
+          user={user}
+          path='/movie-update/:movieId'
+          render={({ match, history }) => (
+            <MovieUpdate match={match} history={history} user={user} />
+>>>>>>> 564e345... order history try
           )}
         />
       </main>

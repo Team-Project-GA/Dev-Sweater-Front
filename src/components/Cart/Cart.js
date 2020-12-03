@@ -5,6 +5,11 @@ import StripeCheckoutButton from '../Stripe-Button/StripeButton'
 const Cart = ({ totalPrice, onRemove, cartItems, order, onOrder, onAdd, setCartItems }) => {
   // console.log('cartitems', cartItems)
 
+<<<<<<< HEAD
+=======
+const Cart = ({ onAdd, orders, onRemove, cartItems, onOrder, order }) => {
+  console.log('cartitems', cartItems)
+>>>>>>> 564e345... order history try
   return (
     <div>
       <h2
@@ -41,10 +46,18 @@ const Cart = ({ totalPrice, onRemove, cartItems, order, onOrder, onAdd, setCartI
                 style={{ margin: '2rem' }}
                 variant='outline-primary'
                 onClick={() => {
+<<<<<<< HEAD
                   // console.log('on add button', onAdd)
                   onAdd(cartItem)
                 }}>
                 Add
+=======
+                  console.log('on order history button', orders)
+                  onOrder(orders)
+                }}
+                variant='outline-primary'>
+                Checkout
+>>>>>>> 564e345... order history try
               </Button>
             </div>
           </div>
