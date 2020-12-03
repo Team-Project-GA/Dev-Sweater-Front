@@ -2,7 +2,7 @@
 
 ## Application
 
-This is our team project Dev-Sweater e-commerce site. This application was broken into two parts: `Dev-Sweater-Front` & `Dev-Sweater-Back`. The Dev-Sweater-Front was designed to communitcate with `Dev-Sweater-Back` API, so that a user can go through the process of purchasing a product.
+This is our team project Dev-Sweater e-commerce site. This application was broken into two parts: `Dev-Sweater-Front` & `Dev-Sweater-Back`. The `Dev-Sweater-Front` was designed to communitcate with `Dev-Sweater-Back` API, so that a user can go through the process of purchasing a product.
 
 ## Important Links
 
