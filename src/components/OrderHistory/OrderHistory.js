@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 const OrderHistory = ({
   showOrders,
   order,
@@ -12,19 +12,25 @@ const OrderHistory = ({
 }) => {
   // console.log('this is order in order history', order)
 
-  // useEffect(() => {
-  //   showOrders(user, cartItems.owner).then(res => {
-  //     console.log('res from orderHistory component', res)
-  //   }).catch(() => console.error)
-  // }, [])
-
-=======
-const OrderHistory = ({ order, setCartItems, totalPrice }) => {
-  console.log('this is order in order history', order)
->>>>>>> ab4437e... Latest commit
+  useEffect(() => {
+    const notify = () => {
+      const today = new Date()
+      toast.dark(
+        `YOU HAVE ${order.length} ORDERS FROM ${
+          today.toISOString().split('T')[0]
+        }!`,
+        {
+          position: toast.POSITION.BOTTOM_CENTER,
+          autoClose: 2500
+        }
+      )
+    }
+    return notify()
+    // console.log('on add button', onAdd)
+  }, [])
   return (
     <div>
-      <h2
+      <h1
         style={{
           textAlign: 'center',
           fontWeight: 'bold',
@@ -33,46 +39,17 @@ const OrderHistory = ({ order, setCartItems, totalPrice }) => {
           borderBottom: 'solid 3px black'
         }}>
         Order History
-      </h2>
+      </h1>
+      <ToastContainer />
       {order.length === 0 ? (
-=======
-const OrderHistory = ({ cartItems, onOrder, orders }) => {
-  console.log('this is order component cart items', cartItems)
-  return (
-    <div>
-      {orders.length === 0 ? (
->>>>>>> 564e345... order history try
-        <h1>You have no orders</h1>
+        <h1 className='text-center'>You have no orders</h1>
       ) : (
         order.map(item => (
           <div style={{ textAlign: 'center' }} key={item._id}>
-<<<<<<< HEAD
-<<<<<<< HEAD
             <h1>{item.name}</h1>
             <img src={item.img} alt={item.name}></img>
             <h3>${item.price}</h3>
             <h5>Quantity: {item.qty}</h5>
-=======
-            <h1>
-              View your order from
-              {Date()}
-            </h1>
-=======
->>>>>>> ab4437e... Latest commit
-            <img src={item.img} alt={item.name}></img>
-            <h1>Name: {item.name}</h1>
-            <h3>Price: ${item.price}</h3>
-            <h5>Qty: {item.qty}</h5>
-<<<<<<< HEAD
-            <button
-              onClick={() => {
-                console.log('order history', item)
-              }}>
-              press
-            </button>
->>>>>>> 564e345... order history try
-=======
->>>>>>> ab4437e... Latest commit
           </div>
         ))
       )}

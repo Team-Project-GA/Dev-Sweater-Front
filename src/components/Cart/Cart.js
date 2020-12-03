@@ -1,19 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button } from 'react-bootstrap'
 import StripeCheckoutButton from '../Stripe-Button/StripeButton'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-const Cart = ({ totalPrice, onRemove, cartItems, order, onOrder, onAdd, setCartItems }) => {
-<<<<<<< HEAD
-  // console.log('cartitems', cartItems)
-
-<<<<<<< HEAD
-=======
-const Cart = ({ onAdd, orders, onRemove, cartItems, onOrder, order }) => {
-  console.log('cartitems', cartItems)
->>>>>>> 564e345... order history try
-=======
-  console.log('cartitems', cartItems)
->>>>>>> ab4437e... Latest commit
+const Cart = ({
+  totalPrice,
+  onRemove,
+  cartItems,
+  order,
+  onOrder,
+  onAdd,
+  setCartItems
+}) => {
+  useEffect(() => {
+    const notify = () => {
+      toast.dark(`YOU HAVE ${cartItems.length} ITEMS IN YOUR CART!`, {
+        position: toast.POSITION.BOTTOM_CENTER,
+        autoClose: 2500
+      })
+    }
+    return notify()
+    // console.log('on add button', onAdd)
+  }, [])
   return (
     <div>
       <h2
@@ -26,7 +35,13 @@ const Cart = ({ onAdd, orders, onRemove, cartItems, onOrder, order }) => {
         }}>
         Your Total is: ${totalPrice}
       </h2>
-      <StripeCheckoutButton order={order} price={totalPrice} onOrder={onOrder} cartItems={cartItems} />
+      <ToastContainer />
+      <StripeCheckoutButton
+        order={order}
+        price={totalPrice}
+        onOrder={onOrder}
+        cartItems={cartItems}
+      />
       {cartItems.length === 0 ? (
         <h1 style={{ textAlign: 'center' }}>Cart is Empty</h1>
       ) : (
@@ -50,23 +65,11 @@ const Cart = ({ onAdd, orders, onRemove, cartItems, onOrder, order }) => {
                 style={{ margin: '2rem' }}
                 variant='outline-primary'
                 onClick={() => {
-<<<<<<< HEAD
                   // console.log('on add button', onAdd)
                   onAdd(cartItem)
                 }}>
                 Add
-=======
-                  console.log('on order history button', orders)
-                  onOrder(orders)
-                }}
-                variant='outline-primary'>
-                Checkout
->>>>>>> 564e345... order history try
               </Button>
-<<<<<<< HEAD
-=======
-              <StripeCheckoutButton order={order} price={totalPrice} onOrder={onOrder} cartItems={cartItems} setCartItems={setCartItems} />
->>>>>>> ab4437e... Latest commit
             </div>
           </div>
         ))
