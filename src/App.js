@@ -213,6 +213,10 @@ const App = () => {
           render={() => (
             <OrderHistory
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+              setCartItems={setCartItems}
+>>>>>>> ab4437e... Latest commit
               totalPrice={totalPrice}
               order={order}
               onAdd={onAddToCart}

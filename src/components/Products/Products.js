@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
+<<<<<<< HEAD
 import { Row } from 'react-bootstrap'
+=======
+import { Col, Row } from 'react-bootstrap'
+>>>>>>> ab4437e... Latest commit
 import Product from './Product'
 // import { Card, Button, Col, Row } from 'react-bootstrap'
 // import { Link } from 'react-router-dom'
@@ -18,7 +22,9 @@ const Products = ({ indexProducts, user, onAdd, onRemove }) => {
   return (
     <Row>
       {products.map(product => (
-        <Product user={user} onAdd={onAdd} product={product} onRemove={onRemove} key={product._id} />
+        <Col key={product._id}>
+          <Product user={user} onAdd={onAdd}product={product} onRemove={onRemove}/>
+        </Col>
       ))}
     </Row>
   )

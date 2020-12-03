@@ -1,6 +1,7 @@
 import React from 'react'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const OrderHistory = ({
   showOrders,
   order,
@@ -17,6 +18,10 @@ const OrderHistory = ({
   //   }).catch(() => console.error)
   // }, [])
 
+=======
+const OrderHistory = ({ order, setCartItems, totalPrice }) => {
+  console.log('this is order in order history', order)
+>>>>>>> ab4437e... Latest commit
   return (
     <div>
       <h2
@@ -42,6 +47,7 @@ const OrderHistory = ({ cartItems, onOrder, orders }) => {
         order.map(item => (
           <div style={{ textAlign: 'center' }} key={item._id}>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <h1>{item.name}</h1>
             <img src={item.img} alt={item.name}></img>
             <h3>${item.price}</h3>
@@ -51,10 +57,13 @@ const OrderHistory = ({ cartItems, onOrder, orders }) => {
               View your order from
               {Date()}
             </h1>
+=======
+>>>>>>> ab4437e... Latest commit
             <img src={item.img} alt={item.name}></img>
             <h1>Name: {item.name}</h1>
             <h3>Price: ${item.price}</h3>
             <h5>Qty: {item.qty}</h5>
+<<<<<<< HEAD
             <button
               onClick={() => {
                 console.log('order history', item)
@@ -62,6 +71,8 @@ const OrderHistory = ({ cartItems, onOrder, orders }) => {
               press
             </button>
 >>>>>>> 564e345... order history try
+=======
+>>>>>>> ab4437e... Latest commit
           </div>
         ))
       )}

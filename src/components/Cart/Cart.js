@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap'
 import StripeCheckoutButton from '../Stripe-Button/StripeButton'
 
 const Cart = ({ totalPrice, onRemove, cartItems, order, onOrder, onAdd, setCartItems }) => {
+<<<<<<< HEAD
   // console.log('cartitems', cartItems)
 
 <<<<<<< HEAD
@@ -10,6 +11,9 @@ const Cart = ({ totalPrice, onRemove, cartItems, order, onOrder, onAdd, setCartI
 const Cart = ({ onAdd, orders, onRemove, cartItems, onOrder, order }) => {
   console.log('cartitems', cartItems)
 >>>>>>> 564e345... order history try
+=======
+  console.log('cartitems', cartItems)
+>>>>>>> ab4437e... Latest commit
   return (
     <div>
       <h2
@@ -59,6 +63,10 @@ const Cart = ({ onAdd, orders, onRemove, cartItems, onOrder, order }) => {
                 Checkout
 >>>>>>> 564e345... order history try
               </Button>
+<<<<<<< HEAD
+=======
+              <StripeCheckoutButton order={order} price={totalPrice} onOrder={onOrder} cartItems={cartItems} setCartItems={setCartItems} />
+>>>>>>> ab4437e... Latest commit
             </div>
           </div>
         ))
