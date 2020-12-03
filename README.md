@@ -39,7 +39,7 @@ We started by creating the ERD, Wireframes and SCRUM planning for the project. W
 ## Unsolved Problems
 
 - Clear cart after order has been purchased
-- Add in `msgAlert` on succes and failure
+- Add in `msgAlert` on failure
 
 - Clear `orderHistory` on different user sign-in
 
