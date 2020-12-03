@@ -9,8 +9,8 @@ This is our team project Dev-Sweater e-commerce site. This application was broke
 - `Dev-Sweater-Front` is deployed [here](https://team-project-ga.github.io/Dev-Sweater-Front/)
 
 - `Dev-Sweater-Back` is the **_Backend_** for this application, the repo and deployed links can be found here:
-  [Repo](https://github.com/Team-Project-GA/Dev-Sweater-Back)
-  [Deployed](https://dev-sweater-back.herokuapp.com/)
+  [Repo Link](https://github.com/Team-Project-GA/Dev-Sweater-Back)
+  [Deployed Link](https://dev-sweater-back.herokuapp.com/)
 
 ## Planning Story
 
