@@ -8,7 +8,7 @@ const StripeCheckoutButton = ({ price, order, onOrder, cartItems, setCartItems }
 
   const onToken = token => {
     // console.log('this is the token from stripe button', token, order)
-    alert('Payment Succesful!')
+    // alert('Payment Succesful!')
   }
 
   return (

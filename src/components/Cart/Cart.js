@@ -36,12 +36,14 @@ const Cart = ({
         Your Total is: ${totalPrice}
       </h2>
       <ToastContainer />
-      <StripeCheckoutButton
-        order={order}
-        price={totalPrice}
-        onOrder={onOrder}
-        cartItems={cartItems}
-      />
+      {cartItems.length !== 0 &&
+        <StripeCheckoutButton
+          order={order}
+          price={totalPrice}
+          onOrder={onOrder}
+          cartItems={cartItems}
+        />
+      }
       {cartItems.length === 0 ? (
         <h1 style={{ textAlign: 'center' }}>Cart is Empty</h1>
       ) : (
