@@ -3,7 +3,7 @@ import { Card, Button, Col } from 'react-bootstrap'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const Product = ({ product, user, onAdd, onRemove }) => {
+const Product = ({ product, user, onAdd }) => {
   return (
     <Col>
       <Card
@@ -35,13 +35,6 @@ const Product = ({ product, user, onAdd, onRemove }) => {
                 }}
                 variant='outline-primary'>
                 Add
-              </Button>
-              <Button
-                onClick={() => {
-                  onRemove(product)
-                }}
-                variant='outline-primary'>
-                Remove
               </Button>
             </div>
           ) : (
