@@ -7,6 +7,8 @@ const StripeCheckoutButton = ({ price, order, onOrder, cartItems, setCartItems }
     'pk_test_51HrE44L2U82glnTctIrx2JUyDW0bxbUOjku0zEbSlxDQj4NNlApmhtLS2PAdHVzPoCVBvfxBJkwwkLxG5pnO9xmy00g9ni8j92'
 
   const onToken = token => {
+    setCartItems([])
+    return token
     // console.log('this is the token from stripe button', token, order)
     // alert('Payment Succesful!')
   }
@@ -17,6 +19,7 @@ const StripeCheckoutButton = ({ price, order, onOrder, cartItems, setCartItems }
       name='Dev-Sweater'
       image='https://logos.textgiraffe.com/logos/logo-name/21488178-designstyle-panda-l.png'
       description={`Your total is $${price}`}
+      allowRememberMe={false}
       amount={priceForStripe}
       panelLabel='Pay Now'
       token={onToken}

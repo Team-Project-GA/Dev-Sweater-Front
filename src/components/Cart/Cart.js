@@ -11,7 +11,8 @@ const Cart = ({
   order,
   onOrder,
   onAdd,
-  setCartItems
+  setCartItems,
+  setOrder
 }) => {
   useEffect(() => {
     const notify = () => {
@@ -20,7 +21,7 @@ const Cart = ({
         autoClose: 2500
       })
     }
-    return notify()
+    notify()
     // console.log('on add button', onAdd)
   }, [])
   return (
@@ -38,6 +39,8 @@ const Cart = ({
       <ToastContainer />
       {cartItems.length !== 0 &&
         <StripeCheckoutButton
+          setOrder={setOrder}
+          setCartItems={setCartItems}
           order={order}
           price={totalPrice}
           onOrder={onOrder}
