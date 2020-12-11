@@ -65,12 +65,12 @@ const App = () => {
   }
 
   const onOrder = product => {
-    const orderExist = order.find(
+    const orderExist = cartItems.find(
       cartElement => cartElement._id === product._id
     )
     if (orderExist) {
       setOrder(
-        order.map(cartElement =>
+        cartItems.map(cartElement =>
           cartElement._id === product._id
             ? {
               ...orderExist,
@@ -81,6 +81,7 @@ const App = () => {
       )
     } else {
       setOrder([...order, ...product])
+      // setCartItems([])
     }
   }
 
@@ -168,6 +169,7 @@ const App = () => {
               onRemove={onRemoveFromCart}
               cartItems={cartItems}
               order={order}
+              setOrder={setOrder}
               onOrder={onOrder}
               user={user}
             />
