@@ -21,7 +21,7 @@ const OrderHistory = ({
         }!`,
         {
           position: toast.POSITION.BOTTOM_CENTER,
-          autoClose: 2500
+          autoClose: 1000
         }
       )
     }
@@ -45,9 +45,14 @@ const OrderHistory = ({
         <h1 className='text-center'>You have no orders</h1>
       ) : (
         order.map(item => (
-          <div style={{ textAlign: 'center' }} key={item._id}>
+          <div style={{
+            textAlign: 'center',
+            width: '18rem',
+            margin: 'auto',
+            marginBottom: '2rem'
+          }} key={item._id}>
             <h1>{item.name}</h1>
-            <img src={item.img} alt={item.name}></img>
+            <img style={{ height: '150px', width: '150px' }} src={item.img} alt={item.name}></img>
             <h3>${item.price}</h3>
             <h5>Quantity: {item.qty}</h5>
           </div>
