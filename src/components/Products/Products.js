@@ -16,7 +16,7 @@ const Products = ({ indexProducts, user, onAdd, onRemove }) => {
       const notify = () => {
         toast.success('CHECK OUT OUR PRODUCTS!', {
           position: toast.POSITION.BOTTOM_CENTER,
-          autoClose: 2000
+          autoClose: 1000
         })
       }
       return notify()
