@@ -26,7 +26,7 @@ const Product = ({ product, user, onAdd }) => {
                   const notify = () => {
                     toast.success(`ADDED ${product.name} TO CART!`, {
                       position: toast.POSITION.BOTTOM_CENTER,
-                      autoClose: 2000
+                      autoClose: 1500
                     })
                   }
                   onAdd(product)

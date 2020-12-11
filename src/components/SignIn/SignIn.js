@@ -3,7 +3,10 @@ import { withRouter } from 'react-router-dom'
 
 import { signIn } from '../../api/auth'
 
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Form from 'react-bootstrap/Form'
+
 import Button from 'react-bootstrap/Button'
 
 class SignIn extends Component {
@@ -30,8 +33,14 @@ class SignIn extends Component {
       .then(res => setUser(res.data.user))
       .then(() => history.push('/products'))
       .catch(() => {
+        const notify = () => {
+          toast.error('Failed to Sign In, Try Again!', {
+            position: toast.POSITION.BOTTOM_CENTER,
+            autoClose: 1500
+          })
+        }
         this.setState({ email: '', password: '' })
-        // return console.error
+        notify()
       })
   }
 
@@ -42,6 +51,7 @@ class SignIn extends Component {
       <div className='row'>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
           <h3>Sign In</h3>
+          <ToastContainer />
           <Form onSubmit={this.onSignIn}>
             <Form.Group controlId='email'>
               <Form.Label>Email address</Form.Label>

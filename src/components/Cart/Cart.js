@@ -11,16 +11,17 @@ const Cart = ({
   order,
   onOrder,
   onAdd,
-  setCartItems
+  setCartItems,
+  setOrder
 }) => {
   useEffect(() => {
     const notify = () => {
       toast.dark(`YOU HAVE ${cartItems.length} ITEMS IN YOUR CART!`, {
         position: toast.POSITION.BOTTOM_CENTER,
-        autoClose: 2500
+        autoClose: 1000
       })
     }
-    return notify()
+    notify()
     // console.log('on add button', onAdd)
   }, [])
   return (
@@ -38,6 +39,8 @@ const Cart = ({
       <ToastContainer />
       {cartItems.length !== 0 &&
         <StripeCheckoutButton
+          setOrder={setOrder}
+          setCartItems={setCartItems}
           order={order}
           price={totalPrice}
           onOrder={onOrder}
@@ -50,7 +53,7 @@ const Cart = ({
         cartItems.map(cartItem => (
           <div style={{ textAlign: 'center' }} key={cartItem._id}>
             <h1>{cartItem.name}</h1>
-            <img className='img' src={cartItem.img} alt={cartItem.name}></img>
+            <img style={{ height: '150px', width: '150px' }} src={cartItem.img} alt={cartItem.name}></img>
             <h3>${cartItem.price}</h3>
             <h5>Quantity: {cartItem.qty}</h5>
             <div className='container btn-sx'>
